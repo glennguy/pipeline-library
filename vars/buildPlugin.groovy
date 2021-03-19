@@ -106,7 +106,7 @@ def call(Map addonParams = [:])
 	for (int i = 0; i < platforms.size(); ++i)
 	{
 		String platform = platforms[i]
-
+		echo "iter platform ${platform}"
 		def category = "binary-addons/${platform}-${version}"
 		if (ThrottleJobProperty.fetchDescriptor().getCategories().every{ c -> c.getCategoryName() !=  category})
 		{
