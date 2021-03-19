@@ -370,6 +370,7 @@ def call(Map addonParams = [:])
 						catch (error)
 						{
 							buildResult = 'FAILURE'
+							throw error
 						}
 						finally
 						{
