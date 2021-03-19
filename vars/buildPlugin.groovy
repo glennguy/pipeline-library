@@ -440,5 +440,4 @@ def slackNotifier(String buildResult, String platform)
 	if (!buildResult)
 		buildResult = "UNKNOWN"
 
-	slackSend(channel: "#buildserver-addons", color: "${STATUS_COLORS[buildResult]}", message: "${env.JOB_NAME} #${env.BUILD_NUMBER} for ${platform} ${buildResult} (<${env.BUILD_URL}|Open>)")
 }
