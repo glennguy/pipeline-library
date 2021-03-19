@@ -131,6 +131,7 @@ def call(Map addonParams = [:])
 							{
 								pwd = pwd()
 								kodiBranch = version == "Matrix" ? "master" : version
+								echo "before clone"
 								checkout([
 									changelog: false,
 									scm: [
@@ -141,9 +142,10 @@ def call(Map addonParams = [:])
 										userRemoteConfigs: [[refspec: "+refs/heads/${kodiBranch}:refs/remotes/origin/${kodiBranch}", url: 'https://github.com/xbmc/xbmc.git']]
 									]
 								])
-
+								echo "after clone"
 								if (isUnix())
 								{
+									echo "is unix"
 									folder = PLATFORMS_VALID[platform]
 									sh "WORKSPACE=`pwd` sh -xe ./tools/buildsteps/${folder}/prepare-depends"
 									folder = PLATFORMS_VALID[platform]
@@ -154,6 +156,7 @@ def call(Map addonParams = [:])
 								}
 								else
 								{
+									echo "is not unix"
 									folder = PLATFORMS_VALID[platform]
 									bat "tools/buildsteps/${folder}/prepare-env.bat"
 									folder = PLATFORMS_VALID[platform]
