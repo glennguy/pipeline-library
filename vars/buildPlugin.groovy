@@ -78,7 +78,7 @@ def call(Map addonParams = [:])
 		disableResume(),
 		durabilityHint('PERFORMANCE_OPTIMIZED'),
 		pipelineTriggers(env.BRANCH_NAME == 'Matrix' ? [cron('@weekly')] : null),
-		[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: true],
+		[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
 		[$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 1, paramsToUseForLimit: '', throttleEnabled: true, throttleOption: 'category'],
 		parameters([
 			extendedChoice('deployPlatforms', PLATFORMS_DEPLOY.join(','), PLATFORMS_DEPLOY.join(','), 'Platforms to deploy, deploy param from Jenkinsfile is always respected'),
