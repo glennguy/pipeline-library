@@ -333,7 +333,7 @@ def call(Map addonParams = [:])
 										def pattern = 'kodi-' + addon.replace('.', '-') + "_${packageversion}-${params.TAGREV}*${dist}_source.changes"
 										changespattern.put(dist, pattern)
 										writeFile file: "debian/changelog", text: "${changelog}"
-										sh "debuild -d -S -k'jenkins (jenkins build bot) <jenkins@kodi.tv>'"
+										sh "debuild -uc -us -d -S -k'jenkins (jenkins build bot) <jenkins@kodi.tv>'"
 									}
 								}
 
